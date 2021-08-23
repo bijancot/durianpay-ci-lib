@@ -24,6 +24,7 @@ class Durianpay
         CURLOPT_POSTFIELDS => $payload,
         CURLOPT_HTTPHEADER => array(
             "authorization: $this->apikey",
+            "content-type: application/json"
         ),
         ));
 
