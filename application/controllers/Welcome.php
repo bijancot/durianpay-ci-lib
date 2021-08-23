@@ -68,6 +68,8 @@ class Welcome extends CI_Controller {
 			  'SettlementGroup' => 'BranchName',
 			),
 		);
+
+		$payload = json_encode($payload);
 		$res = $this->durianpay->createOrder($payload);
 
 		var_dump($res);
