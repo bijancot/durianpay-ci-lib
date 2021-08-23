@@ -54,7 +54,7 @@ class Durianpay
               'order_id' => 'ord_BqSWnELzJa9507',
               'amount' => 20000,
               'mobile' => '082334059230',
-              'wallet_type' => 'DANA',
+              'wallet_type' => 'LINKAJA'
             ),
         );
 
