@@ -28,7 +28,7 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$payload = array (
-			'amount' => '10000.67',
+			'amount' => '20000',
 			'payment_option' => 'full_payment',
 			'currency' => 'IDR',
 			'order_ref_id' => 'order_ref_001',
@@ -58,7 +58,7 @@ class Welcome extends CI_Controller {
 			  array (
 				'name' => 'LED Television',
 				'qty' => 1,
-				'price' => '10001.00',
+				'price' => '20000',
 				'logo' => 'https://merchant.com/product_001/tv_image.jpg',
 			  ),
 			),
@@ -70,8 +70,12 @@ class Welcome extends CI_Controller {
 		);
 
 		$payload = json_encode($payload);
-		$res = $this->durianpay->createOrder($payload);
+		$orderid = $this->durianpay->createOrder($payload)['id'];
 
-		var_dump($res);
+		//type available : VA/EWALLET
+		$mobile="0895326927698";
+		$paynow = $this->durianpay->createPayment($orderid,20000,$mobile,"LINKAJA");
+
+		var_dump($paynow);
 	}
 }

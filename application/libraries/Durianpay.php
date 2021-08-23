@@ -42,5 +42,27 @@ class Durianpay
 
         return $result;
     }
+
+    public function createEwalletPayment($orderid,$amount,$mobile,$walletType){
+        $url = $this->endpoint;
+        $url = $url.'/payments/charge';
+
+        $payload = array (
+            'type' => 'EWALLET',
+            'request' => 
+            array (
+              'order_id' => $orderid,
+              'amount' => $amount,
+              'mobile' => $mobile,
+              'wallet_type' => $walletType,
+            ),
+        );
+
+        $payload = json_encode($payload);
+
+        $result = $this->durianPost($url,$payload);
+
+        return $result;
+    }
 }
 ?>
