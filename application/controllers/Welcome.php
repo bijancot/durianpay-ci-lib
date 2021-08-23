@@ -70,12 +70,12 @@ class Welcome extends CI_Controller {
 		);
 
 		$payload = json_encode($payload);
-		$orderid = $this->durianpay->createOrder($payload)['id'];
+		$orderid = $this->durianpay->createOrder($payload);
 
 		//type available : VA/EWALLET
 		$mobile="0895326927698";
 		$paynow = $this->durianpay->createEwalletPayment($orderid,20000,$mobile,"LINKAJA");
 
-		var_dump($paynow);
+		var_dump($orderid);
 	}
 }
