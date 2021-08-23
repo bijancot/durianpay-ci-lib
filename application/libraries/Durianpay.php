@@ -32,7 +32,7 @@ class Durianpay
 
         curl_close($curl);
         $data = json_decode($response, true);
-        return $data;
+        return $data['data'];
     }
 
     public function createOrder($payload){
