@@ -35,11 +35,11 @@ class Durianpay
         return $data;
     }
 
-    private function createOrder($payload){
+    public function createOrder($payload){
         $url = $this->endpoint;
         $url = $url.'/orders';
         $result = $this->durianPost($url,$payload);
-        
+
         return $result;
     }
 }
