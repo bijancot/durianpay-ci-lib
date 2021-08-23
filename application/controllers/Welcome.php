@@ -74,7 +74,7 @@ class Welcome extends CI_Controller {
 
 		//type available : VA/EWALLET
 		$mobile="0895326927698";
-		$paynow = $this->durianpay->createPayment($orderid,20000,$mobile,"LINKAJA");
+		$paynow = $this->durianpay->createEwalletPayment($orderid,20000,$mobile,"LINKAJA");
 
 		var_dump($paynow);
 	}
