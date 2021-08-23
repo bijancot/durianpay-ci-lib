@@ -3,6 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
 
+	public function __construct()
+    {
+		//loading ongkir-library
+		parent::__construct();
+		$this->load->library("durianpay");
+    }
+
 	/**
 	 * Index Page for this controller.
 	 *
@@ -20,6 +27,49 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		$payload = array (
+			'amount' => '10000.67',
+			'payment_option' => 'full_payment',
+			'currency' => 'IDR',
+			'order_ref_id' => 'order_ref_001',
+			'customer' => 
+			array (
+			  'customer_ref_id' => 'cust_001',
+			  'given_name' => 'Jane Doe',
+			  'email' => 'jane_doe@nomail.com',
+			  'mobile' => '85722173217',
+			  'address' => 
+			  array (
+				'receiver_name' => 'Jude Casper',
+				'receiver_phone' => '8987654321',
+				'label' => 'Jude\'s Address',
+				'address_line_1' => 'Jl. HR. Rasuna Said',
+				'address_line_2' => 'Apartment #786',
+				'city' => 'Jakarta Selatan',
+				'region' => 'Jakarta',
+				'country' => 'Indonesia',
+				'postal_code' => '560008',
+				'landmark' => 'Kota Jakarta Selatan',
+			  ),
+			),
+			'items' => 
+			array (
+			  0 => 
+			  array (
+				'name' => 'LED Television',
+				'qty' => 1,
+				'price' => '10001.00',
+				'logo' => 'https://merchant.com/product_001/tv_image.jpg',
+			  ),
+			),
+			'metadata' => 
+			array (
+			  'my-meta-key' => 'my-meta-value',
+			  'SettlementGroup' => 'BranchName',
+			),
+		);
+		$res = $this->durianpay->createOrder($payload);
+
+		var_dump($res);
 	}
 }
