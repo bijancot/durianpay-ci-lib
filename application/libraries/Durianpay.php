@@ -51,10 +51,10 @@ class Durianpay
             'type' => 'EWALLET',
             'request' => 
             array (
-              'order_id' => $orderid,
+              'order_id' => '$orderid',
               'amount' => $amount,
-              'mobile' => $mobile,
-              'wallet_type' => $walletType,
+              'mobile' => '$mobile',
+              'wallet_type' => '$walletType',
             ),
         );
 
