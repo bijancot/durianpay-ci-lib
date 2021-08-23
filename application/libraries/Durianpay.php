@@ -54,7 +54,7 @@ class Durianpay
               'order_id' => '$orderid',
               'amount' => $amount,
               'mobile' => '$mobile',
-              'wallet_type' => '$walletType',
+              'wallet_type' => '$walletType'
             ),
         );
 
