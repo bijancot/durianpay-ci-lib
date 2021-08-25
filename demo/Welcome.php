@@ -70,7 +70,8 @@ class Welcome extends CI_Controller {
 		);
 
 		$payload = json_encode($payload);
-		$orderid = $this->durianpay->createOrder($payload)['data']['id'];
+		$order = $this->durianpay->createOrder($payload);
+		$orderid = $this->durianpay->getOrderId($order);
 
 		//EWALLET
 		//param : orderid,$amount,$mobile,$walletType
