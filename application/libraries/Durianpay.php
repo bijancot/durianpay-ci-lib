@@ -74,10 +74,10 @@ class Durianpay
             'type' => 'VA',
             'request' => 
             array (
-              'order_id' => 'ord_DAsdXCZXC122Zxdas',
-              'bank_code' => 'MANDIRI',
-              'name' => 'Name Appear in ATM',
-              'amount' => '20000',
+              'order_id' => $orderid,
+              'bank_code' => $bankCode,
+              'name' => $name,
+              'amount' => $amount,
             ),
           );
 
