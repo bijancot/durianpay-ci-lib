@@ -111,5 +111,9 @@ class Durianpay
     public function getPaymentExpiration($paymentResponses){
         return $paymentResponses['response']['expiration_time'];
     }
+
+    public function getVANumber($vaPaymentResponses){
+        return $paymentResponses['response']['account_number'];
+    }
 }
 ?>
