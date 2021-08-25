@@ -52,10 +52,10 @@ class Durianpay
             'type' => 'EWALLET',
             'request' => 
             array (
-              'order_id' => "ord_BqSWnELzJa9507",
-              'amount' => 20000,
-              'mobile' => "082334059230",
-              'wallet_type' => "LINKAJA"
+              'order_id' => $orderid,
+              'amount' => $amount,
+              'mobile' => $mobile,
+              'wallet_type' => $walletType
             ),
         );
 
@@ -64,6 +64,52 @@ class Durianpay
         $result = $this->durianPost($url,$payload);
 
         return $result;
+    }
+
+    public function createVAPayment($orderid,$amount,$bankCode,$name){
+        $url = $this->endpoint;
+        $url = $url.'/payments/charge';
+
+        $payload = array (
+            'type' => 'VA',
+            'request' => 
+            array (
+              'order_id' => 'ord_DAsdXCZXC122Zxdas',
+              'bank_code' => 'MANDIRI',
+              'name' => 'Name Appear in ATM',
+              'amount' => '20000',
+            ),
+          );
+
+        $payload = json_encode($payload);
+
+        $result = $this->durianPost($url,$payload);
+
+        return $result;
+    }
+
+    public function getOrderId($order){
+        $orderid = $order['data']['id'];
+
+        return $orderid;
+    }
+
+    public function getOrderData($order,$param=null){
+        $data = $order['data'];
+
+        if($param==null){
+            return $data;
+        }else{
+            return $data['param'];
+        }
+    }
+
+    public function getPaymentId($paymentResponses){
+        return $paymentResponses['response']['payment_id'];
+    }
+
+    public function getPaymentExpiration($paymentResponses){
+        return $paymentResponses['response']['expiration_time'];
     }
 }
 ?>
