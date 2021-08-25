@@ -7,7 +7,7 @@ class Durianpay
     public function __construct()
     {
         $this->endpoint = "https://api.durianpay.id/v1";
-        $this->apikey = base64_encode("dp_live_4SHCqxnY2Yn517EK:");
+        $this->apikey = base64_encode("dp_testdfasd4SHCqxnY2Yn517EK:");
     }
 
     private function durianPost($url,$payload){
