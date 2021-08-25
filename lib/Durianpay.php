@@ -2,7 +2,7 @@
 
 class Durianpay
 {
-    public $endpoint, $apiKey;
+    public $endpoint, $apiKey, $VAFee=4000, $ewalletFee=1.5;
 
     public function __construct()
     {
@@ -34,6 +34,24 @@ class Durianpay
         curl_close($curl);
         $data = json_decode($response, true);
         return $data;
+    }
+
+    public function calculateAmount($amount,$paymentType){
+        if($paymentType=="EWALLET"){
+            $result = $amount + ($amount*($ewalletFee*100%));
+            return $result;
+        }elseif ($paymentType=="VA") {
+            $result = $amount + $VAFee;
+            return $result;
+        }
+    }
+
+    public function setVAFee($newFee){
+        $VAFee = $newFee;
+    }
+
+    public function setEwalletFee($newFee){
+        $ewalletFee = $newFee;
     }
 
     public function createOrder($payload){
