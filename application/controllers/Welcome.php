@@ -84,4 +84,10 @@ class Welcome extends CI_Controller {
 		echo "</br></br></br></br></br>";
 		var_dump($paynow);
 	}
+
+	public function webhook(){
+		$data = file_get_contents('php://input');
+
+		$action = json_decode($json, true);
+	}
 }
