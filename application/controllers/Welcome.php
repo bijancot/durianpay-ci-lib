@@ -89,5 +89,8 @@ class Welcome extends CI_Controller {
 		$data = file_get_contents('php://input');
 
 		$action = json_decode($json, true);
+		$fWrite = fopen("log.txt","a");
+	$wrote = fwrite($fWrite, var_dump($_POST));
+	fclose($fWrite);
 	}
 }
